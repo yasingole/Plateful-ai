@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: restaurant-image-enhancer-api
+    runtime: node
+    buildCommand: cd backend && npm ci && npm run build
+    startCommand: cd backend && node dist/index.js
+    autoDeploy: false
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: CORS_ORIGIN
+        value: https://your-frontend-url.vercel.app
+      - key: AUTH0_DOMAIN
+        sync: false
+      - key: AUTH0_AUDIENCE
+        sync: false
+      - key: GOAPI_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: WEBHOOK_SECRET
+        generateValue: true
